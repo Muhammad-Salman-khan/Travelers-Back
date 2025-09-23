@@ -1,7 +1,7 @@
 import TextType from "./TextType.jsx";
 import Logo from "../assets/plane-departure-solid-full.svg";
 
-const Footer = ({ Items }) => {
+const Footer = ({ count }) => {
   return (
     <>
       <footer className="bg-white/5 backdrop-blur-lg border-t border-white/10 text-gray-300 py-8 mt-10 shadow-inner shadow-black/30">

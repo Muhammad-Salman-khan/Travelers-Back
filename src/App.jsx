@@ -7,6 +7,7 @@ function App() {
   const [description, setdescription] = useState("");
   const [count, setCount] = useState(0);
   const [Items, setItems] = useState([]);
+  const [Packed, setPacked] = useState(false);
 
   const handleEve = (e) => {
     e.preventDefault();
@@ -39,9 +40,8 @@ function App() {
               <div
                 key={Id}
                 className={`flex 
-                  ${
-                    packed ? "bg-gray-400" : "bg-white"
-                  } w-3/4 h-24 overflow-hidden  shadow-lg max-w-96 rounded-xl`}
+                  ${packed ? "bg-gray-400 " : "bg-white text-black"} 
+                   w-3/4 h-24 overflow-hidden  shadow-lg max-w-96 rounded-xl`}
               >
                 <svg width="16" height="96" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -61,22 +61,22 @@ function App() {
                Z"
                     fill="tan"
                     stroke="tan"
-                    stroke-width="2"
-                    stroke-linecap="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                   ></path>
                 </svg>
                 <div className="mx-2.5 overflow-hidden w-full">
                   <p
                     className={`mt-1.5 ${
-                      packed ? "line-through" : ""
-                    } text-xl font-bold text-[peru] leading-8 mr-3 overflow-hidden text-ellipsis whitespace-nowrap`}
+                      packed ? "line-through text-white" : "text-black"
+                    } text-xl font-bold text-black leading-8 mr-3 overflow-hidden text-ellipsis whitespace-nowrap`}
                   >
                     {Description}
                   </p>
                   <p
-                    className={`overflow-hidden ${
-                      packed ? "line-through" : ""
-                    } leading-5 break-all text-black max-h-10`}
+                    className={`overflow-hidden
+                      ${packed ? "line-through text-white" : "text-black"}
+                      leading-5 break-all  max-h-10`}
                   >
                     Items: {Items}
                   </p>
@@ -87,10 +87,11 @@ function App() {
                       key={Id}
                       className="hidden peer"
                       type="checkbox"
+                      checked={packed}
                       onChange={() =>
-                        setItems((prev) =>
-                          prev.map((item) =>
-                            item.Id === Id ? { ...item, packed: true } : item
+                        setItems((e) =>
+                          e.map((e) =>
+                            e.Id === Id ? { ...e, packed: !e.packed } : e
                           )
                         )
                       }
@@ -106,9 +107,9 @@ function App() {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                           d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                         ></path>
                       </svg>
                     </span>
@@ -125,15 +126,15 @@ function App() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke="peru"
                     fill="none"
                     className="w-7 h-7"
                   >
                     <path
                       d="M6 18L18 6M6 6l12 12"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
                     ></path>
                   </svg>
                 </button>
@@ -141,7 +142,7 @@ function App() {
             ))}
           </div>
         </main>
-        <Footer />
+        <Footer count={count} />
       </div>
     </>
   );
