@@ -5,21 +5,17 @@ import { useState } from "react";
 
 function App() {
   const [description, setdescription] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(null);
   const [Items, setItems] = useState([]);
-  const [Packed, setPacked] = useState(false);
-
   const handleEve = (e) => {
     e.preventDefault();
     if (!description) return;
     const ListData = {
       Id: Date.now(),
-      Items: count,
+      Items: count || 0,
       Description: description,
       packed: false,
     };
-
-    setdescription("");
     setItems((e) => [...e, ListData]);
   };
   return (
@@ -142,7 +138,7 @@ function App() {
             ))}
           </div>
         </main>
-        <Footer count={count} />
+        <Footer Items={Items} />
       </div>
     </>
   );
