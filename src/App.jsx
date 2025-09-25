@@ -19,6 +19,9 @@ function App() {
     setdescription("");
     setItems((e) => [...e, ListData]);
   };
+  const clearList = () => {
+    setItems([]);
+  };
   return (
     <>
       <div className=" w-full bg-gradient-to-br from-neutral-950 via-black to-neutral-900 text-gray-200 font-sans">
@@ -30,6 +33,7 @@ function App() {
             Description={description}
             setDescription={(e) => setdescription(e)}
             handleForm={handleEve}
+            clearItems={clearList}
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-8">

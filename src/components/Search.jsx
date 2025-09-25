@@ -4,6 +4,7 @@ const Search = ({
   setDescription,
   handleForm,
   itemsCount,
+  clearItems,
 }) => {
   return (
     <>
@@ -55,6 +56,16 @@ const Search = ({
             </button>
           </div>
         </form>
+        <div className="text-center m-2">
+          <button
+            onClick={clearItems}
+            disabled={Description.length < 0}
+            className={`px-5 py-3 rounded-xl font-semibold transition-all duration-200 bg-red-500 text-white hover:bg-red-800
+          `}
+          >
+            Clear
+          </button>
+        </div>
       </div>
     </>
   );
