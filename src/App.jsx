@@ -16,6 +16,7 @@ function App() {
       Description: description,
       packed: false,
     };
+    setdescription("");
     setItems((e) => [...e, ListData]);
   };
   return (
