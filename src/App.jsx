@@ -20,7 +20,8 @@ function App() {
     setItems((e) => [...e, ListData]);
   };
   const clearList = () => {
-    setItems([]);
+    const confirm = window.confirm("Are you sure you wanna delete it?");
+    if (confirm) setItems([]);
   };
   return (
     <>
